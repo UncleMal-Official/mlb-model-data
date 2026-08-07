@@ -55,7 +55,7 @@ def fetch_statcast_range(start, end):
 KEEP_COLS = [
     "game_date", "game_pk", "batter", "pitcher", "player_name", "stand", "p_throws",
     "pitch_type", "events", "description", "zone", "balls", "strikes",
-    "launch_speed", "launch_angle", "launch_speed_angle",
+    "launch_speed", "launch_angle", "launch_speed_angle", "hit_distance_sc",
     "estimated_woba_using_speedangle", "woba_value", "woba_denom",
     "at_bat_number", "pitch_number", "inning", "home_team", "away_team",
 ]
@@ -111,6 +111,8 @@ def load_raw():
     df["is_hardhit"] = df["launch_speed"] >= 95
     df["out_zone"] = df["zone"] >= 11
     df["is_chase"] = df["out_zone"] & df["is_swing"]
+    df["ev_bbe"] = df["launch_speed"].where(df["is_bbe"])
+    df["la_bbe"] = df["launch_angle"].where(df["is_bbe"])
     ev = df["events"].fillna("")
     df["pa_end"] = ev != ""
     df["e_k"] = ev.isin(["strikeout", "strikeout_double_play"])
@@ -126,7 +128,7 @@ AGG_SPEC = dict(
     pitches=("pitch_type", "size"), swings=("is_swing", "sum"), whiffs=("is_whiff", "sum"),
     chases=("is_chase", "sum"), out_zone_p=("out_zone", "sum"), bbe=("is_bbe", "sum"),
     barrels=("is_barrel", "sum"), hardhit=("is_hardhit", "sum"),
-    ev_sum=("launch_speed", "sum"), la_sum=("launch_angle", "sum"),
+    ev_sum=("ev_bbe", "sum"), la_sum=("la_bbe", "sum"),
     xwobacon_sum=("estimated_woba_using_speedangle", "sum"),
     woba_sum=("woba_value", "sum"), woba_den=("woba_denom", "sum"),
     pa=("pa_end", "sum"), k=("e_k", "sum"), bb=("e_bb", "sum"), hbp=("e_hbp", "sum"),
@@ -258,8 +260,14 @@ def fetch_prizepicks():
         rows, players = [], {}
         url = "https://api.prizepicks.com/projections"
         params = {"league_id": 2, "per_page": 500, "single_stat": "true"}
-        headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
-                   "Accept": "application/json"}
+        headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+                   "Accept": "application/json, text/plain, */*",
+                   "Accept-Language": "en-US,en;q=0.9",
+                   "Origin": "https://app.prizepicks.com",
+                   "Referer": "https://app.prizepicks.com/",
+                   "sec-ch-ua": '"Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"',
+                   "sec-ch-ua-mobile": "?0", "sec-ch-ua-platform": '"Windows"',
+                   "Sec-Fetch-Dest": "empty", "Sec-Fetch-Mode": "cors", "Sec-Fetch-Site": "same-site"}
         for page in range(1, 8):
             params["page"] = page
             r = requests.get(url, params=params, headers=headers, timeout=30)
@@ -307,6 +315,13 @@ def main():
     if len(df):
         build_batter_agg(df)
         build_pitcher_agg(df)
+        # Day After feed: every batted ball from the last 2 days, with contact quality
+        recent = df[(df["game_date"] >= pd.Timestamp(TODAY - timedelta(days=2))) & df["is_bbe"]]
+        cols = ["game_date", "game_pk", "batter", "player_name", "pitcher", "stand", "p_throws",
+                "pitch_type", "pitch_grp", "events", "launch_speed", "launch_angle",
+                "launch_speed_angle", "hit_distance_sc", "estimated_woba_using_speedangle"]
+        recent[[c for c in cols if c in recent.columns]].to_parquet(f"{OUT_DIR}/recent_bbe.parquet", index=False)
+        print(f"recent_bbe: {len(recent)} batted balls (last 2 days)")
         max_date = str(df["game_date"].max().date())
     else:
         max_date = None
