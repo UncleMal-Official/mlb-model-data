@@ -1,5 +1,5 @@
 {
- "fetched_utc": "2026-08-07T20:29:36.597746",
+ "fetched_utc": "2026-08-07T21:08:33.620060",
  "date": "2026-08-07",
  "games": [
   {
@@ -1069,7 +1069,7 @@
   {
    "game_pk": 823750,
    "game_date_utc": "2026-08-07T23:40:00Z",
-   "status": "Scheduled",
+   "status": "Pre-Game",
    "venue": "American Family Field",
    "away": {
     "team": "Minnesota Twins",
@@ -1085,8 +1085,136 @@
     "probable_name": "Shane Drohan",
     "probable_throws": "L"
    },
-   "away_lineup": [],
-   "home_lineup": [],
+   "away_lineup": [
+    {
+     "id": 668885,
+     "name": "Austin Martin",
+     "bat_side": "R",
+     "position": "RF",
+     "order": 1
+    },
+    {
+     "id": 680777,
+     "name": "Ryan Jeffers",
+     "bat_side": "R",
+     "position": "C",
+     "order": 2
+    },
+    {
+     "id": 668904,
+     "name": "Royce Lewis",
+     "bat_side": "R",
+     "position": "1B",
+     "order": 3
+    },
+    {
+     "id": 605137,
+     "name": "Josh Bell",
+     "bat_side": "S",
+     "position": "DH",
+     "order": 4
+    },
+    {
+     "id": 665019,
+     "name": "Kody Clemens",
+     "bat_side": "L",
+     "position": "1B",
+     "order": 5
+    },
+    {
+     "id": 807712,
+     "name": "Luke Keaschall",
+     "bat_side": "R",
+     "position": "2B",
+     "order": 6
+    },
+    {
+     "id": 701785,
+     "name": "Kaelen Culpepper",
+     "bat_side": "R",
+     "position": "SS",
+     "order": 7
+    },
+    {
+     "id": 605170,
+     "name": "Victor Caratini",
+     "bat_side": "S",
+     "position": "C",
+     "order": 8
+    },
+    {
+     "id": 668952,
+     "name": "Ryan Kreidler",
+     "bat_side": "R",
+     "position": "SS",
+     "order": 9
+    }
+   ],
+   "home_lineup": [
+    {
+     "id": 668930,
+     "name": "Brice Turang",
+     "bat_side": "L",
+     "position": "2B",
+     "order": 1
+    },
+    {
+     "id": 694192,
+     "name": "Jackson Chourio",
+     "bat_side": "R",
+     "position": "LF",
+     "order": 2
+    },
+    {
+     "id": 641343,
+     "name": "Jake Bauers",
+     "bat_side": "L",
+     "position": "1B",
+     "order": 3
+    },
+    {
+     "id": 661388,
+     "name": "William Contreras",
+     "bat_side": "R",
+     "position": "C",
+     "order": 4
+    },
+    {
+     "id": 669003,
+     "name": "Garrett Mitchell",
+     "bat_side": "L",
+     "position": "CF",
+     "order": 5
+    },
+    {
+     "id": 592885,
+     "name": "Christian Yelich",
+     "bat_side": "L",
+     "position": "DH",
+     "order": 6
+    },
+    {
+     "id": 800325,
+     "name": "Luis Lara",
+     "bat_side": "S",
+     "position": "RF",
+     "order": 7
+    },
+    {
+     "id": 806198,
+     "name": "Cooper Pratt",
+     "bat_side": "R",
+     "position": "SS",
+     "order": 8
+    },
+    {
+     "id": 666152,
+     "name": "David Hamilton",
+     "bat_side": "L",
+     "position": "3B",
+     "order": 9
+    }
+   ],
    "doubleheader": "N",
    "game_number": 1
   },
@@ -1109,7 +1237,71 @@
     "probable_name": "Daniel Lynch IV",
     "probable_throws": "L"
    },
-   "away_lineup": [],
+   "away_lineup": [
+    {
+     "id": 691718,
+     "name": "Pete Crow-Armstrong",
+     "bat_side": "L",
+     "position": "CF",
+     "order": 1
+    },
+    {
+     "id": 673548,
+     "name": "Seiya Suzuki",
+     "bat_side": "R",
+     "position": "RF",
+     "order": 2
+    },
+    {
+     "id": 608324,
+     "name": "Alex Bregman",
+     "bat_side": "R",
+     "position": "3B",
+     "order": 3
+    },
+    {
+     "id": 683737,
+     "name": "Michael Busch",
+     "bat_side": "L",
+     "position": "1B",
+     "order": 4
+    },
+    {
+     "id": 663538,
+     "name": "Nico Hoerner",
+     "bat_side": "R",
+     "position": "2B",
+     "order": 5
+    },
+    {
+     "id": 664023,
+     "name": "Ian Happ",
+     "bat_side": "S",
+     "position": "LF",
+     "order": 6
+    },
+    {
+     "id": 608348,
+     "name": "Carson Kelly",
+     "bat_side": "R",
+     "position": "C",
+     "order": 7
+    },
+    {
+     "id": 699393,
+     "name": "Pedro Ram\u00edrez",
+     "bat_side": "S",
+     "position": "2B",
+     "order": 8
+    },
+    {
+     "id": 621020,
+     "name": "Dansby Swanson",
+     "bat_side": "R",
+     "position": "SS",
+     "order": 9
+    }
+   ],
    "home_lineup": [
     {
      "id": 695600,
@@ -1349,7 +1541,71 @@
     "probable_name": "Nathan Eovaldi",
     "probable_throws": "R"
    },
-   "away_lineup": [],
+   "away_lineup": [
+    {
+     "id": 683002,
+     "name": "Gunnar Henderson",
+     "bat_side": "L",
+     "position": "SS",
+     "order": 1
+    },
+    {
+     "id": 624413,
+     "name": "Pete Alonso",
+     "bat_side": "R",
+     "position": "1B",
+     "order": 2
+    },
+    {
+     "id": 702616,
+     "name": "Jackson Holliday",
+     "bat_side": "L",
+     "position": "2B",
+     "order": 3
+    },
+    {
+     "id": 641933,
+     "name": "Tyler O'Neill",
+     "bat_side": "R",
+     "position": "RF",
+     "order": 4
+    },
+    {
+     "id": 687637,
+     "name": "Dylan Beavers",
+     "bat_side": "L",
+     "position": "RF",
+     "order": 5
+    },
+    {
+     "id": 665750,
+     "name": "Leody Taveras",
+     "bat_side": "S",
+     "position": "CF",
+     "order": 6
+    },
+    {
+     "id": 691723,
+     "name": "Coby Mayo",
+     "bat_side": "R",
+     "position": "3B",
+     "order": 7
+    },
+    {
+     "id": 681297,
+     "name": "Colton Cowser",
+     "bat_side": "L",
+     "position": "CF",
+     "order": 8
+    },
+    {
+     "id": 665966,
+     "name": "Carlos Narv\u00e1ez",
+     "bat_side": "R",
+     "position": "C",
+     "order": 9
+    }
+   ],
    "home_lineup": [
     {
      "id": 592626,
@@ -1421,7 +1677,7 @@
   {
    "game_pk": 825051,
    "game_date_utc": "2026-08-08T01:40:00Z",
-   "status": "Scheduled",
+   "status": "Pre-Game",
    "venue": "Chase Field",
    "away": {
     "team": "Los Angeles Dodgers",
@@ -1438,7 +1694,71 @@
     "probable_throws": "R"
    },
    "away_lineup": [],
-   "home_lineup": [],
+   "home_lineup": [
+    {
+     "id": 672695,
+     "name": "Geraldo Perdomo",
+     "bat_side": "S",
+     "position": "SS",
+     "order": 1
+    },
+    {
+     "id": 682998,
+     "name": "Corbin Carroll",
+     "bat_side": "L",
+     "position": "RF",
+     "order": 2
+    },
+    {
+     "id": 672515,
+     "name": "Gabriel Moreno",
+     "bat_side": "R",
+     "position": "C",
+     "order": 3
+    },
+    {
+     "id": 606466,
+     "name": "Ketel Marte",
+     "bat_side": "S",
+     "position": "2B",
+     "order": 4
+    },
+    {
+     "id": 663457,
+     "name": "Lars Nootbaar",
+     "bat_side": "L",
+     "position": "LF",
+     "order": 5
+    },
+    {
+     "id": 571448,
+     "name": "Nolan Arenado",
+     "bat_side": "R",
+     "position": "3B",
+     "order": 6
+    },
+    {
+     "id": 596146,
+     "name": "Max Kepler",
+     "bat_side": "L",
+     "position": "LF",
+     "order": 7
+    },
+    {
+     "id": 694374,
+     "name": "Tim Tawa",
+     "bat_side": "R",
+     "position": "LF",
+     "order": 8
+    },
+    {
+     "id": 814439,
+     "name": "Ryan Waldschmidt",
+     "bat_side": "R",
+     "position": "CF",
+     "order": 9
+    }
+   ],
    "doubleheader": "N",
    "game_number": 1
   },
