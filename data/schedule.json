@@ -1,11 +1,11 @@
 {
- "fetched_utc": "2026-08-07T21:17:59.517832",
+ "fetched_utc": "2026-08-07T23:09:15.369033",
  "date": "2026-08-07",
  "games": [
   {
    "game_pk": 823349,
    "game_date_utc": "2026-08-07T22:40:00Z",
-   "status": "Pre-Game",
+   "status": "In Progress",
    "venue": "PNC Park",
    "away": {
     "team": "New York Mets",
@@ -157,7 +157,7 @@
   {
    "game_pk": 823428,
    "game_date_utc": "2026-08-07T22:40:00Z",
-   "status": "Pre-Game",
+   "status": "Delayed Start",
    "venue": "Citizens Bank Park",
    "away": {
     "team": "Toronto Blue Jays",
@@ -309,7 +309,7 @@
   {
    "game_pk": 822699,
    "game_date_utc": "2026-08-07T22:45:00Z",
-   "status": "Pre-Game",
+   "status": "Delayed Start",
    "venue": "Nationals Park",
    "away": {
     "team": "Cincinnati Reds",
@@ -461,7 +461,7 @@
   {
    "game_pk": 823515,
    "game_date_utc": "2026-08-07T23:05:00Z",
-   "status": "Pre-Game",
+   "status": "Delayed Start",
    "venue": "Yankee Stadium",
    "away": {
     "team": "Atlanta Braves",
@@ -613,7 +613,7 @@
   {
    "game_pk": 824727,
    "game_date_utc": "2026-08-07T23:10:00Z",
-   "status": "Pre-Game",
+   "status": "Warmup",
    "venue": "Fenway Park",
    "away": {
     "team": "Athletics",
@@ -765,7 +765,7 @@
   {
    "game_pk": 823836,
    "game_date_utc": "2026-08-07T23:10:00Z",
-   "status": "Pre-Game",
+   "status": "Warmup",
    "venue": "loanDepot park",
    "away": {
     "team": "Los Angeles Angels",
@@ -1693,7 +1693,71 @@
     "probable_name": "Merrill Kelly",
     "probable_throws": "R"
    },
-   "away_lineup": [],
+   "away_lineup": [
+    {
+     "id": 660271,
+     "name": "Shohei Ohtani",
+     "bat_side": "L",
+     "position": "TWP",
+     "order": 1
+    },
+    {
+     "id": 681624,
+     "name": "Andy Pages",
+     "bat_side": "R",
+     "position": "CF",
+     "order": 2
+    },
+    {
+     "id": 518692,
+     "name": "Freddie Freeman",
+     "bat_side": "L",
+     "position": "1B",
+     "order": 3
+    },
+    {
+     "id": 571970,
+     "name": "Max Muncy",
+     "bat_side": "L",
+     "position": "3B",
+     "order": 4
+    },
+    {
+     "id": 605141,
+     "name": "Mookie Betts",
+     "bat_side": "R",
+     "position": "SS",
+     "order": 5
+    },
+    {
+     "id": 663656,
+     "name": "Kyle Tucker",
+     "bat_side": "L",
+     "position": "RF",
+     "order": 6
+    },
+    {
+     "id": 606192,
+     "name": "Teoscar Hern\u00e1ndez",
+     "bat_side": "R",
+     "position": "LF",
+     "order": 7
+    },
+    {
+     "id": 669242,
+     "name": "Tommy Edman",
+     "bat_side": "S",
+     "position": "2B",
+     "order": 8
+    },
+    {
+     "id": 676439,
+     "name": "Hunter Feduccia",
+     "bat_side": "L",
+     "position": "C",
+     "order": 9
+    }
+   ],
    "home_lineup": [
     {
      "id": 672695,
@@ -1765,7 +1829,7 @@
   {
    "game_pk": 823266,
    "game_date_utc": "2026-08-08T01:40:00Z",
-   "status": "Scheduled",
+   "status": "Pre-Game",
    "venue": "Petco Park",
    "away": {
     "team": "Houston Astros",
@@ -1781,15 +1845,143 @@
     "probable_name": "Robbie Ray",
     "probable_throws": "L"
    },
-   "away_lineup": [],
-   "home_lineup": [],
+   "away_lineup": [
+    {
+     "id": 665161,
+     "name": "Jeremy Pe\u00f1a",
+     "bat_side": "R",
+     "position": "SS",
+     "order": 1
+    },
+    {
+     "id": 670541,
+     "name": "Yordan Alvarez",
+     "bat_side": "L",
+     "position": "DH",
+     "order": 2
+    },
+    {
+     "id": 670623,
+     "name": "Isaac Paredes",
+     "bat_side": "R",
+     "position": "3B",
+     "order": 3
+    },
+    {
+     "id": 514888,
+     "name": "Jose Altuve",
+     "bat_side": "R",
+     "position": "2B",
+     "order": 4
+    },
+    {
+     "id": 572233,
+     "name": "Christian Walker",
+     "bat_side": "R",
+     "position": "1B",
+     "order": 5
+    },
+    {
+     "id": 662139,
+     "name": "Daulton Varsho",
+     "bat_side": "L",
+     "position": "CF",
+     "order": 6
+    },
+    {
+     "id": 673237,
+     "name": "Yainer Diaz",
+     "bat_side": "R",
+     "position": "C",
+     "order": 7
+    },
+    {
+     "id": 701358,
+     "name": "Cam Smith",
+     "bat_side": "R",
+     "position": "RF",
+     "order": 8
+    },
+    {
+     "id": 676694,
+     "name": "Jake Meyers",
+     "bat_side": "R",
+     "position": "CF",
+     "order": 9
+    }
+   ],
+   "home_lineup": [
+    {
+     "id": 665487,
+     "name": "Fernando Tatis Jr.",
+     "bat_side": "R",
+     "position": "RF",
+     "order": 1
+    },
+    {
+     "id": 630105,
+     "name": "Jake Cronenworth",
+     "bat_side": "L",
+     "position": "2B",
+     "order": 2
+    },
+    {
+     "id": 592518,
+     "name": "Manny Machado",
+     "bat_side": "R",
+     "position": "3B",
+     "order": 3
+    },
+    {
+     "id": 650859,
+     "name": "Luis Rengifo",
+     "bat_side": "S",
+     "position": "LF",
+     "order": 4
+    },
+    {
+     "id": 701538,
+     "name": "Jackson Merrill",
+     "bat_side": "L",
+     "position": "CF",
+     "order": 5
+    },
+    {
+     "id": 669134,
+     "name": "Luis Campusano",
+     "bat_side": "R",
+     "position": "C",
+     "order": 6
+    },
+    {
+     "id": 657757,
+     "name": "Gavin Sheets",
+     "bat_side": "L",
+     "position": "1B",
+     "order": 7
+    },
+    {
+     "id": 593428,
+     "name": "Xander Bogaerts",
+     "bat_side": "R",
+     "position": "SS",
+     "order": 8
+    },
+    {
+     "id": 823550,
+     "name": "Sung-Mun Song",
+     "bat_side": "L",
+     "position": "2B",
+     "order": 9
+    }
+   ],
    "doubleheader": "N",
    "game_number": 1
   },
   {
    "game_pk": 823103,
    "game_date_utc": "2026-08-08T01:45:00Z",
-   "status": "Scheduled",
+   "status": "Pre-Game",
    "venue": "T-Mobile Park",
    "away": {
     "team": "Tampa Bay Rays",
@@ -1805,15 +1997,143 @@
     "probable_name": "Logan Gilbert",
     "probable_throws": "R"
    },
-   "away_lineup": [],
-   "home_lineup": [],
+   "away_lineup": [
+    {
+     "id": 650490,
+     "name": "Yandy D\u00edaz",
+     "bat_side": "R",
+     "position": "DH",
+     "order": 1
+    },
+    {
+     "id": 666018,
+     "name": "Jonathan Aranda",
+     "bat_side": "L",
+     "position": "1B",
+     "order": 2
+    },
+    {
+     "id": 691406,
+     "name": "Junior Caminero",
+     "bat_side": "R",
+     "position": "3B",
+     "order": 3
+    },
+    {
+     "id": 689414,
+     "name": "Liam Hicks",
+     "bat_side": "L",
+     "position": "C",
+     "order": 4
+    },
+    {
+     "id": 802415,
+     "name": "Chandler Simpson",
+     "bat_side": "L",
+     "position": "LF",
+     "order": 5
+    },
+    {
+     "id": 676356,
+     "name": "Jonny DeLuca",
+     "bat_side": "R",
+     "position": "RF",
+     "order": 6
+    },
+    {
+     "id": 683748,
+     "name": "Victor Mesa Jr.",
+     "bat_side": "L",
+     "position": "RF",
+     "order": 7
+    },
+    {
+     "id": 680700,
+     "name": "Richie Palacios",
+     "bat_side": "L",
+     "position": "2B",
+     "order": 8
+    },
+    {
+     "id": 670764,
+     "name": "Taylor Walls",
+     "bat_side": "S",
+     "position": "SS",
+     "order": 9
+    }
+   ],
+   "home_lineup": [
+    {
+     "id": 621493,
+     "name": "Taylor Ward",
+     "bat_side": "R",
+     "position": "LF",
+     "order": 1
+    },
+    {
+     "id": 702284,
+     "name": "Cole Young",
+     "bat_side": "L",
+     "position": "2B",
+     "order": 2
+    },
+    {
+     "id": 668227,
+     "name": "Randy Arozarena",
+     "bat_side": "R",
+     "position": "LF",
+     "order": 3
+    },
+    {
+     "id": 686527,
+     "name": "Dominic Canzone",
+     "bat_side": "L",
+     "position": "DH",
+     "order": 4
+    },
+    {
+     "id": 677594,
+     "name": "Julio Rodr\u00edguez",
+     "bat_side": "R",
+     "position": "CF",
+     "order": 5
+    },
+    {
+     "id": 647304,
+     "name": "Josh Naylor",
+     "bat_side": "L",
+     "position": "1B",
+     "order": 6
+    },
+    {
+     "id": 680977,
+     "name": "Brendan Donovan",
+     "bat_side": "L",
+     "position": "3B",
+     "order": 7
+    },
+    {
+     "id": 663728,
+     "name": "Cal Raleigh",
+     "bat_side": "S",
+     "position": "C",
+     "order": 8
+    },
+    {
+     "id": 806068,
+     "name": "Colt Emerson",
+     "bat_side": "L",
+     "position": "SS",
+     "order": 9
+    }
+   ],
    "doubleheader": "N",
    "game_number": 1
   },
   {
    "game_pk": 823191,
    "game_date_utc": "2026-08-08T02:15:00Z",
-   "status": "Scheduled",
+   "status": "Pre-Game",
    "venue": "Oracle Park",
    "away": {
     "team": "Detroit Tigers",
@@ -1829,8 +2149,136 @@
     "probable_name": "JT Brubaker",
     "probable_throws": "R"
    },
-   "away_lineup": [],
-   "home_lineup": [],
+   "away_lineup": [
+    {
+     "id": 805808,
+     "name": "Kevin McGonigle",
+     "bat_side": "L",
+     "position": "SS",
+     "order": 1
+    },
+    {
+     "id": 650402,
+     "name": "Gleyber Torres",
+     "bat_side": "R",
+     "position": "2B",
+     "order": 2
+    },
+    {
+     "id": 693307,
+     "name": "Dillon Dingler",
+     "bat_side": "R",
+     "position": "C",
+     "order": 3
+    },
+    {
+     "id": 682985,
+     "name": "Riley Greene",
+     "bat_side": "L",
+     "position": "LF",
+     "order": 4
+    },
+    {
+     "id": 690993,
+     "name": "Colt Keith",
+     "bat_side": "L",
+     "position": "3B",
+     "order": 5
+    },
+    {
+     "id": 679529,
+     "name": "Spencer Torkelson",
+     "bat_side": "R",
+     "position": "1B",
+     "order": 6
+    },
+    {
+     "id": 703601,
+     "name": "Max Clark",
+     "bat_side": "L",
+     "position": "CF",
+     "order": 7
+    },
+    {
+     "id": 595879,
+     "name": "Javier B\u00e1ez",
+     "bat_side": "R",
+     "position": "SS",
+     "order": 8
+    },
+    {
+     "id": 656716,
+     "name": "Zach McKinstry",
+     "bat_side": "L",
+     "position": "2B",
+     "order": 9
+    }
+   ],
+   "home_lineup": [
+    {
+     "id": 805811,
+     "name": "Bryce Eldridge",
+     "bat_side": "L",
+     "position": "DH",
+     "order": 1
+    },
+    {
+     "id": 808982,
+     "name": "Jung Hoo Lee",
+     "bat_side": "L",
+     "position": "RF",
+     "order": 2
+    },
+    {
+     "id": 642715,
+     "name": "Willy Adames",
+     "bat_side": "R",
+     "position": "SS",
+     "order": 3
+    },
+    {
+     "id": 646240,
+     "name": "Rafael Devers",
+     "bat_side": "L",
+     "position": "1B",
+     "order": 4
+    },
+    {
+     "id": 691740,
+     "name": "Daniel Susac",
+     "bat_side": "R",
+     "position": "C",
+     "order": 5
+    },
+    {
+     "id": 687551,
+     "name": "Drew Gilbert",
+     "bat_side": "L",
+     "position": "CF",
+     "order": 6
+    },
+    {
+     "id": 678545,
+     "name": "Osleivis Basabe",
+     "bat_side": "R",
+     "position": "SS",
+     "order": 7
+    },
+    {
+     "id": 687529,
+     "name": "Grant McCray",
+     "bat_side": "L",
+     "position": "CF",
+     "order": 8
+    },
+    {
+     "id": 683766,
+     "name": "Christian Koss",
+     "bat_side": "R",
+     "position": "2B",
+     "order": 9
+    }
+   ],
    "doubleheader": "N",
    "game_number": 1
   }
