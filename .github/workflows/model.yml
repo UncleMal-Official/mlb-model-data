@@ -17,7 +17,6 @@ jobs:
   model:
     runs-on: ubuntu-latest
     timeout-minutes: 45
-    # run after successful fetches (or manual dispatch)
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Check out repo
@@ -33,6 +32,25 @@ jobs:
           pip install pandas numpy pyarrow requests openpyxl playwright
           playwright install --with-deps chromium
 
+      - name: Arrange layout (self-heals flat uploads)
+        run: |
+          sudo mkdir -p /home/claude
+          sudo chown $USER /home/claude
+          mkdir -p model/config model/assets model/data model/output data/pp outputs
+          for f in build_board_v2.py recency.py day_after.py run_day_after.py \
+                   yesterdays_lessons.py diff_boards.py make_xlsx_v2.py make_potd_card.py \
+                   render_card.py join_pp_lines.py run_daily.py potd_auto_template.html \
+                   tracking.csv README_MODEL.md; do
+            [ -f "$f" ] && cp -n "$f" model/ || true
+          done
+          for f in scoring.json model_roadmap.md pitcher_splits_2026.json; do
+            [ -f "$f" ] && cp -n "$f" model/config/ || true
+          done
+          cp -n park_factors_*.json model/config/ 2>/dev/null || true
+          cp -n bpp_features_*.json model/config/ 2>/dev/null || true
+          [ -f logo_b64.txt ] && cp -n logo_b64.txt model/assets/ || true
+          ls model/ model/config/
+
       - name: Run daily model
         run: python model/run_daily.py
 
@@ -40,7 +58,7 @@ jobs:
         run: |
           git config user.name "mlb-model-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add outputs/ model/tracking.csv model/data/pitcher_splits_2026.json model/config/ || true
+          git add outputs/ model/ || true
           git diff --cached --quiet || git commit -m "Model outputs $(date -u +'%Y-%m-%d %H:%M UTC')"
           git pull --rebase -X theirs origin main
           git push
