@@ -4,60 +4,24 @@
  "team": "WSH",
  "game": "CIN@WAS",
  "market": "Fantasy Score",
- "line": 11.0,
- "line_source": "MODEL-ESTIMATED - confirm vs PrizePicks",
- "proj_fp": 14.1,
- "sim_win_pct": 52.0,
- "sim_median": 12.0,
+ "line": 5.5,
+ "line_source": "manual",
+ "proj_fp": 11.844,
+ "sim_win_pct": 68.5,
+ "sim_median": 9.0,
  "pgs": 3.58,
  "conf": "HIGH",
  "flags": "LINEUP-PROJ,RAIN,RECENCY-HOT",
  "alt_markets": {
-  "total_bases": 3.3,
-  "hits": 1.58,
-  "hr_prob": 39.8,
+  "total_bases": 2.772,
+  "hits": 1.3272,
+  "hr_prob": 34.707837526485285,
   "hit_prob": 73.0
  },
  "photo_mode": "silo (auto)",
  "render": {
-  "block": 642,
-  "left": 85
+  "block": 566,
+  "left": 123
  },
- "runner_ups": [
-  {
-   "player": "CJ Abrams",
-   "team": "WSH",
-   "proj_fp": 14.1,
-   "pgs": 3.58,
-   "conf": "HIGH"
-  },
-  {
-   "player": "Seiya Suzuki",
-   "team": "CHC",
-   "proj_fp": 11.54,
-   "pgs": 3.13,
-   "conf": "HIGH"
-  },
-  {
-   "player": "George Springer",
-   "team": "TOR",
-   "proj_fp": 10.82,
-   "pgs": 2.75,
-   "conf": "HIGH"
-  },
-  {
-   "player": "Pete Crow-Armstrong",
-   "team": "CHC",
-   "proj_fp": 12.63,
-   "pgs": 2.07,
-   "conf": "HIGH"
-  },
-  {
-   "player": "Salvador Perez",
-   "team": "KC",
-   "proj_fp": 11.49,
-   "pgs": 3.91,
-   "conf": "MED"
-  }
- ]
+ "runner_ups": []
 }
