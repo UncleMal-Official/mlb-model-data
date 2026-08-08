@@ -112,6 +112,29 @@ def ensure_configs():
                        sim_pitcher_props=[], bvp_history=[], outlier_odds_report=[]), open(bp, "w"), indent=1)
 
 
+
+# ---- 3b. regenerate fallback tables from repo parquets (always fresh: call-ups included)
+def ensure_local_tables():
+    import re as _re
+    src = (MODEL / "build_board_v2.py").read_text()
+    TEAM_ABBR = eval(_re.search(r"TEAM_ABBR\s*=\s*\{[^}]+\}", src, _re.S).group(0).split("=", 1)[1])
+    hb = pd.read_parquet(WS / "data" / "hitting_basic.parquet")
+    l21 = hb[hb.window == "last21"].copy()
+    l21["team"] = l21["team"].astype(str).map(TEAM_ABBR).fillna(l21["team"].astype(str))
+    l21 = l21.rename(columns={"doubles": "d2", "triples": "d3"})
+    cols = ["player_id", "name", "team", "pa", "ab", "h", "d2", "d3", "hr", "r", "rbi", "bb", "so", "sb", "avg", "slg"]
+    l21[[c for c in cols if c in l21.columns]].to_csv(MODEL / "data" / "batters_21d.csv", index=False)
+
+    ba = pd.read_parquet(WS / "data" / "batter_agg.parquet")
+    a = ba[(ba.window == "season") & (ba.pitch_grp == "ALL")]
+    if len(a):
+        g = a.groupby(["batter", "stand"], as_index=False).pa.sum()
+        top = g.sort_values("pa", ascending=False).drop_duplicates("batter")
+        top = top.rename(columns={"batter": "player_id", "stand": "bat_side"})
+        top[["player_id", "bat_side"]].to_csv(MODEL / "data" / "bat_sides.csv", index=False)
+    log(f"fallback tables rebuilt: {len(l21)} batters_21d rows")
+
+
 # ---- 4. board (dated exec of the canonical builder)
 def build_board():
     src = (MODEL / "build_board_v2.py").read_text().replace("2026-08-07", TODAY)
@@ -221,6 +244,7 @@ def stage():
 if __name__ == "__main__":
     refresh_splits()
     ensure_configs()
+    ensure_local_tables()
     build_board()
     grade_yesterday()
     try:  # Day After tool (dated exec, same trick as the board)
