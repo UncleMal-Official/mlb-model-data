@@ -214,13 +214,22 @@ print("lessons:", len(L))
 """], check=False, cwd=MODEL)
     except Exception as e:
         log(f"lessons: {e}")
-    # PrizePicks JSON: accept data/pp/ OR repo root, any pp_<date>.json / projections json
+    # PrizePicks JSON: found by CONTENT, not filename - any *.json in data/pp/, the repo
+    # root, or model/data whose head carries PrizePicks projection markers. Name-agnostic
+    # so an upload called PPv2.json / projections.json / pp_2026-08-08.json all work.
+    def _is_pp(p):
+        try:
+            if p.stat().st_size > 60_000_000:
+                return False
+            head = p.open('rb').read(4096).decode('utf-8', 'ignore')
+            return ('"stat_type"' in head or '"new_player"' in head
+                    or '"projection' in head)
+        except Exception:
+            return False
     cands = []
-    for d in (WS / "data" / "pp", WS, MODEL / "data"):
+    for d in (WS / 'data' / 'pp', WS, MODEL / 'data'):
         if d.exists():
-            cands += [p for p in d.glob("*.json")
-                      if re.search(r"^(pp[_-]|prizepicks|projections)", p.name, re.I)
-                      and (TODAY in p.name or re.search(r"projections", p.name, re.I))]
+            cands += [p for p in sorted(d.glob('*.json')) if _is_pp(p)]
     pp = sorted(set(cands))
     cal_k = None
     if pp:
