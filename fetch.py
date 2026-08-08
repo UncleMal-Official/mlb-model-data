@@ -1,5 +1,5 @@
 """
-Daily MLB data fetcher.
+Daily MLB data fetcher (v6).
 Pulls pitch-level Statcast data (incremental, cached), plus MLB Stats API
 schedule/probables/lineups, and writes compact aggregate tables the model consumes:
 
@@ -56,7 +56,11 @@ KEEP_COLS = [
     "game_date", "game_pk", "batter", "pitcher", "player_name", "stand", "p_throws",
     "pitch_type", "events", "description", "zone", "balls", "strikes",
     "launch_speed", "launch_angle", "launch_speed_angle", "hit_distance_sc",
-    "estimated_woba_using_speedangle", "woba_value", "woba_denom",
+    "estimated_woba_using_speedangle", "estimated_ba_using_speedangle",
+    "woba_value", "woba_denom", "hc_x", "hc_y",
+    "bat_speed", "swing_length", "squared_up", "attack_angle",
+    "release_speed", "release_spin_rate", "release_extension", "arm_angle",
+    "api_break_z_with_gravity", "api_break_x_arm",
     "at_bat_number", "pitch_number", "inning", "home_team", "away_team",
 ]
 
@@ -113,6 +117,20 @@ def load_raw():
     df["is_chase"] = df["out_zone"] & df["is_swing"]
     df["ev_bbe"] = df["launch_speed"].where(df["is_bbe"])
     df["la_bbe"] = df["launch_angle"].where(df["is_bbe"])
+    df["xba_bbe"] = df.get("estimated_ba_using_speedangle", pd.Series(index=df.index, dtype=float)).where(df["is_bbe"])
+    df["is_sweetspot"] = df["is_bbe"] & df["launch_angle"].between(8, 32)
+    # spray: pulled and pulled-in-the-air (park-porch HR signal)
+    if "hc_x" in df.columns and "hc_y" in df.columns:
+        import numpy as np
+        spray = np.degrees(np.arctan2(df["hc_x"] - 125.42, 198.27 - df["hc_y"]))
+        pulled = ((df["stand"] == "R") & (spray < -12)) | ((df["stand"] == "L") & (spray > 12))
+        df["is_pull"] = df["is_bbe"] & pulled
+        df["is_pullair"] = df["is_pull"] & (df["launch_angle"] > 10)
+    else:
+        df["is_pull"] = False; df["is_pullair"] = False
+    df["sq_bbe"] = df.get("squared_up", pd.Series(index=df.index, dtype=float)).where(df["is_bbe"])
+    df["bs_swing"] = df.get("bat_speed", pd.Series(index=df.index, dtype=float)).where(df["is_swing"])
+    df["in_zone"] = df["zone"].le(9)
     ev = df["events"].fillna("")
     df["pa_end"] = ev != ""
     df["e_k"] = ev.isin(["strikeout", "strikeout_double_play"])
@@ -133,6 +151,13 @@ AGG_SPEC = dict(
     woba_sum=("woba_value", "sum"), woba_den=("woba_denom", "sum"),
     pa=("pa_end", "sum"), k=("e_k", "sum"), bb=("e_bb", "sum"), hbp=("e_hbp", "sum"),
     b1=("e_1b", "sum"), b2=("e_2b", "sum"), b3=("e_3b", "sum"), hr=("e_hr", "sum"),
+    xba_sum=("xba_bbe", "sum"), sweetspot=("is_sweetspot", "sum"),
+    pull_bbe=("is_pull", "sum"), pullair_bbe=("is_pullair", "sum"),
+    sq_sum=("sq_bbe", "sum"), sq_n=("sq_bbe", "count"),
+    bs_sum=("bs_swing", "sum"), bs_n=("bs_swing", "count"),
+    velo_sum=("release_speed", "sum"), velo_n=("release_speed", "count"),
+    spin_sum=("release_spin_rate", "sum"), ext_sum=("release_extension", "sum"),
+    in_zone=("in_zone", "sum"),
 )
 
 def window_frames(df):
@@ -254,6 +279,35 @@ def fetch_schedule():
         json.dump(dict(fetched_utc=datetime.utcnow().isoformat(), date=TODAY.isoformat(), games=games), f, indent=1)
     print(f"schedule: {len(games)} games")
 
+def build_pitcher_starts(df):
+    """Per pitcher per game: velo, usage volume, contact quality against - powers velo-trend flags."""
+    fb = df[df["pitch_type"].isin(["FF", "SI"])]
+    a = df.groupby(["pitcher", "game_date"]).agg(
+        pitches=("pitch_type", "size"), whiffs=("is_whiff", "sum"), bbe=("is_bbe", "sum"),
+        barrels=("is_barrel", "sum"), xw_sum=("estimated_woba_using_speedangle", "sum"),
+        velo_all=("release_speed", "mean")).reset_index()
+    b = fb.groupby(["pitcher", "game_date"]).agg(fb_velo=("release_speed", "mean"),
+                                                 fb_n=("pitch_type", "size")).reset_index()
+    out = a.merge(b, on=["pitcher", "game_date"], how="left")
+    out.to_parquet(f"{OUT_DIR}/pitcher_starts.parquet", index=False)
+    print(f"pitcher_starts: {len(out)} pitcher-games")
+
+def fetch_sprint_speed():
+    """Savant sprint speed leaderboard - SB model + infield-hit fuel. Non-fatal."""
+    try:
+        r = requests.get("https://baseballsavant.mlb.com/leaderboard/sprint_speed",
+                         params={"min_pa": 5, "csv": "true"}, timeout=60,
+                         headers={"User-Agent": "Mozilla/5.0"})
+        if r.status_code == 200 and len(r.content) > 500:
+            from io import StringIO
+            df = pd.read_csv(StringIO(r.text))
+            df.to_parquet(f"{OUT_DIR}/sprint_speed.parquet", index=False)
+            print(f"sprint_speed: {len(df)} players")
+        else:
+            print(f"sprint_speed: HTTP {r.status_code}")
+    except Exception as e:
+        print(f"sprint_speed failed (non-fatal): {e}")
+
 def fetch_prizepicks():
     """Best-effort PrizePicks board pull (may be bot-blocked from CI; failure is non-fatal)."""
     try:
@@ -304,22 +358,97 @@ def fetch_prizepicks():
     except Exception as e:
         print(f"prizepicks fetch failed (non-fatal): {e}")
 
+
+# ---------------------------------------------------------------- player art
+IMG_BASE = "https://img.mlbstatic.com/mlb-photos/image/upload"
+SILO_URL = IMG_BASE + "/d_people:generic:headshot:silo:current.png/w_960,q_auto:good/v1/people/{pid}/headshot/silo/current.png"
+HERO_URL = IMG_BASE + "/w_1320,q_auto:good/v1/people/{pid}/action/hero/current"
+
+def fetch_headshots():
+    """Art for the auto-POTD card. Silo cutouts for every batter in hitting_basic
+    (stars first, so pre-lineup morning boards always have art) + probables/lineups;
+    action 'hero' shots for today's schedule players when MLB has one.
+    Skip-if-exists, capped per run, entirely non-fatal."""
+    try:
+        hs_dir = os.path.join(OUT_DIR, "headshots")
+        os.makedirs(hs_dir, exist_ok=True)
+        ids = []
+        try:
+            sch = json.load(open(f"{OUT_DIR}/schedule.json"))
+            for g in sch.get("games", []):
+                for s in ("away", "home"):
+                    if g[s].get("probable_id"):
+                        ids.append(int(g[s]["probable_id"]))
+                for key in ("away_lineup", "home_lineup"):
+                    ids += [int(p["id"]) for p in g.get(key, []) if p.get("id")]
+        except Exception:
+            pass
+        sched_ids = list(dict.fromkeys(ids))
+        try:
+            hb = pd.read_parquet(f"{OUT_DIR}/hitting_basic.parquet")
+            hb = hb[hb.window == "season"].sort_values("pa", ascending=False)
+            ids += [int(x) for x in hb.player_id.tolist()]
+        except Exception:
+            pass
+        ids = list(dict.fromkeys(ids))
+        s = requests.Session()
+        s.headers["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+        new = heroes = 0
+        CAP = 250          # per-run download cap; converges in ~2 runs, tiny daily delta after
+        for pid in ids:
+            if new >= CAP:
+                break
+            path = os.path.join(hs_dir, f"{pid}_silo.png")
+            if os.path.exists(path):
+                continue
+            try:
+                r = s.get(SILO_URL.format(pid=pid), timeout=20)
+                if r.ok and r.headers.get("content-type", "").startswith("image"):
+                    open(path, "wb").write(r.content)
+                    new += 1
+            except Exception:
+                pass
+        for pid in sched_ids:
+            if new >= CAP:
+                break
+            path = os.path.join(hs_dir, f"{pid}_hero.jpg")
+            miss = os.path.join(hs_dir, f"{pid}_hero.miss")    # negative cache: no re-hits daily
+            if os.path.exists(path) or os.path.exists(miss):
+                continue
+            try:
+                r = s.get(HERO_URL.format(pid=pid), timeout=20)
+                if r.ok and r.headers.get("content-type", "").startswith("image") and len(r.content) > 20000:
+                    open(path, "wb").write(r.content)
+                    new += 1
+                    heroes += 1
+                else:
+                    open(miss, "w").write("")
+            except Exception:
+                pass
+        print(f"headshots: {new} new ({heroes} action heroes), {len(os.listdir(hs_dir))} files total")
+    except Exception as e:
+        print(f"headshots failed (non-fatal): {e}")
+
 def main():
     t0 = time.time()
     fetch_schedule()
     fetch_prizepicks()
+    fetch_sprint_speed()
     fetch_hitting_basic()
+    fetch_headshots()
     update_raw()
     df = load_raw()
     print(f"raw pitches loaded: {len(df)}")
     if len(df):
         build_batter_agg(df)
         build_pitcher_agg(df)
+        build_pitcher_starts(df)
         # Day After feed: every batted ball from the last 2 days, with contact quality
         recent = df[(df["game_date"] >= pd.Timestamp(TODAY - timedelta(days=2))) & df["is_bbe"]]
         cols = ["game_date", "game_pk", "batter", "player_name", "pitcher", "stand", "p_throws",
                 "pitch_type", "pitch_grp", "events", "launch_speed", "launch_angle",
-                "launch_speed_angle", "hit_distance_sc", "estimated_woba_using_speedangle"]
+                "launch_speed_angle", "hit_distance_sc", "estimated_woba_using_speedangle",
+                "estimated_ba_using_speedangle", "hc_x", "hc_y", "bat_speed", "squared_up"]
         recent[[c for c in cols if c in recent.columns]].to_parquet(f"{OUT_DIR}/recent_bbe.parquet", index=False)
         print(f"recent_bbe: {len(recent)} batted balls (last 2 days)")
         max_date = str(df["game_date"].max().date())
