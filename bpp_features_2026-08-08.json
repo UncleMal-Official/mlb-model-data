@@ -1,0 +1,601 @@
+{
+ "source": "Ballpark Pal reports 2026-08-08 11:13 AM (park sheet, HR #1/#2, BvP, Most Likely, Outlier Odds)",
+ "most_likely_hr_bp_odds": [
+  {
+   "batter": "Yordan Alvarez",
+   "odds": 302
+  },
+  {
+   "batter": "George Springer",
+   "odds": 329
+  },
+  {
+   "batter": "Kyle Schwarber",
+   "odds": 350
+  },
+  {
+   "batter": "Pete Crow-Armstrong",
+   "odds": 357
+  },
+  {
+   "batter": "Seiya Suzuki",
+   "odds": 357
+  },
+  {
+   "batter": "Shohei Ohtani",
+   "odds": 363
+  },
+  {
+   "batter": "Junior Caminero",
+   "odds": 376
+  },
+  {
+   "batter": "Ronald Acu\u00f1a Jr.",
+   "odds": 378
+  },
+  {
+   "batter": "Matt Olson",
+   "odds": 383
+  },
+  {
+   "batter": "Kazuma Okamoto",
+   "odds": 408
+  },
+  {
+   "batter": "Bryce Harper",
+   "odds": 410
+  },
+  {
+   "batter": "Royce Lewis",
+   "odds": 413
+  },
+  {
+   "batter": "Brandon Lowe",
+   "odds": 426
+  },
+  {
+   "batter": "Willson Contreras",
+   "odds": 432
+  },
+  {
+   "batter": "CJ Abrams",
+   "odds": 435
+  }
+ ],
+ "hr_solid_matchups": [
+  {
+   "batter": "Brandon Marsh",
+   "pitcher": "Max Scherzer",
+   "exp_pa": 4.1,
+   "bp_odds": 441,
+   "starter": 44,
+   "park": 48,
+   "bullpen": -6
+  },
+  {
+   "batter": "Trea Turner",
+   "pitcher": "Max Scherzer",
+   "exp_pa": 4.5,
+   "bp_odds": 475,
+   "starter": 26,
+   "park": 37,
+   "bullpen": -7
+  },
+  {
+   "batter": "J.T. Realmuto",
+   "pitcher": "Max Scherzer",
+   "exp_pa": 4.0,
+   "bp_odds": 485,
+   "starter": 28,
+   "park": 35,
+   "bullpen": -13
+  },
+  {
+   "batter": "Michael Busch",
+   "pitcher": "Seth Lugo",
+   "exp_pa": 4.7,
+   "bp_odds": 492,
+   "starter": 20,
+   "park": 28,
+   "bullpen": -3
+  },
+  {
+   "batter": "Alec Bohm",
+   "pitcher": "Max Scherzer",
+   "exp_pa": 4.2,
+   "bp_odds": 625,
+   "starter": 35,
+   "park": 50,
+   "bullpen": -11
+  },
+  {
+   "batter": "Jacob Gonzalez",
+   "pitcher": "Robert Stock",
+   "exp_pa": 3.9,
+   "bp_odds": 641,
+   "starter": 32,
+   "park": 2,
+   "bullpen": 13
+  },
+  {
+   "batter": "Alejandro Kirk",
+   "pitcher": "Aaron Nola",
+   "exp_pa": 4.2,
+   "bp_odds": 646,
+   "starter": 11,
+   "park": 48,
+   "bullpen": -8
+  }
+ ],
+ "notable_matchups": [
+  {
+   "batter": "Esmerlyn Valdez",
+   "pitcher": "Robert Stock",
+   "rc": 30,
+   "hr": 17,
+   "xbh": 0,
+   "b1": -5,
+   "k": -16,
+   "bb": 53
+  },
+  {
+   "batter": "Rhys Hoskins",
+   "pitcher": "Anthony Kay",
+   "rc": 25,
+   "hr": 11,
+   "xbh": 13,
+   "b1": 10,
+   "k": -9,
+   "bb": 34
+  },
+  {
+   "batter": "Ian Happ",
+   "pitcher": "Seth Lugo",
+   "rc": 24,
+   "hr": 2,
+   "xbh": 8,
+   "b1": 17,
+   "k": -22,
+   "bb": 26
+  },
+  {
+   "batter": "Dansby Swanson",
+   "pitcher": "Seth Lugo",
+   "rc": 24,
+   "hr": 20,
+   "xbh": 29,
+   "b1": 4,
+   "k": -19,
+   "bb": 26
+  },
+  {
+   "batter": "Seiya Suzuki",
+   "pitcher": "Seth Lugo",
+   "rc": 23,
+   "hr": 26,
+   "xbh": 11,
+   "b1": 23,
+   "k": -21,
+   "bb": 8
+  },
+  {
+   "batter": "Cam Smith",
+   "pitcher": "Michael King",
+   "rc": 22,
+   "hr": 32,
+   "xbh": 13,
+   "b1": 6,
+   "k": -8,
+   "bb": 31
+  },
+  {
+   "batter": "Brandon Marsh",
+   "pitcher": "Max Scherzer",
+   "rc": 20,
+   "hr": 44,
+   "xbh": 19,
+   "b1": -3,
+   "k": -25,
+   "bb": 2
+  },
+  {
+   "batter": "Pete Crow-Armstrong",
+   "pitcher": "Seth Lugo",
+   "rc": 20,
+   "hr": 4,
+   "xbh": 24,
+   "b1": 17,
+   "k": -26,
+   "bb": 8
+  },
+  {
+   "batter": "Travis Bazzana",
+   "pitcher": "Anthony Kay",
+   "rc": 19,
+   "hr": -17,
+   "xbh": 21,
+   "b1": 10,
+   "k": -12,
+   "bb": 32
+  }
+ ],
+ "bvp_history": [
+  {
+   "batter": "Bryce Harper",
+   "pitcher": "Max Scherzer",
+   "pa": 33,
+   "ab": 26,
+   "hits": 7,
+   "hr": 4,
+   "xbh": 2,
+   "k": 10,
+   "bb": 7,
+   "ba": 0.269,
+   "ops": 1.232
+  },
+  {
+   "batter": "Vladimir Guerrero Jr.",
+   "pitcher": "Aaron Nola",
+   "pa": 12,
+   "ab": 8,
+   "hits": 5,
+   "hr": 1,
+   "xbh": 0,
+   "k": 0,
+   "bb": 4,
+   "ba": 0.625,
+   "ops": 1.75
+  },
+  {
+   "batter": "Randy Arozarena",
+   "pitcher": "Griffin Jax",
+   "pa": 10,
+   "ab": 7,
+   "hits": 4,
+   "hr": 1,
+   "xbh": 0,
+   "k": 1,
+   "bb": 3,
+   "ba": 0.571,
+   "ops": 1.7
+  },
+  {
+   "batter": "Bryson Stott",
+   "pitcher": "Max Scherzer",
+   "pa": 16,
+   "ab": 15,
+   "hits": 8,
+   "hr": 0,
+   "xbh": 1,
+   "k": 2,
+   "bb": 1,
+   "ba": 0.533,
+   "ops": 1.163
+  },
+  {
+   "batter": "Kyle Schwarber",
+   "pitcher": "Max Scherzer",
+   "pa": 25,
+   "ab": 21,
+   "hits": 5,
+   "hr": 2,
+   "xbh": 0,
+   "k": 10,
+   "bb": 4,
+   "ba": 0.238,
+   "ops": 0.884
+  },
+  {
+   "batter": "Shohei Ohtani",
+   "pitcher": "Brandon Pfaadt",
+   "pa": 22,
+   "ab": 21,
+   "hits": 5,
+   "hr": 1,
+   "xbh": 1,
+   "k": 5,
+   "bb": 1,
+   "ba": 0.238,
+   "ops": 0.702
+  },
+  {
+   "batter": "Luis Arraez",
+   "pitcher": "Max Scherzer",
+   "pa": 6,
+   "ab": 6,
+   "hits": 3,
+   "hr": 0,
+   "xbh": 1,
+   "k": 1,
+   "bb": 0,
+   "ba": 0.5,
+   "ops": 1.167
+  },
+  {
+   "batter": "Manny Machado",
+   "pitcher": "Peter Lambert",
+   "pa": 14,
+   "ab": 13,
+   "hits": 4,
+   "hr": 1,
+   "xbh": 0,
+   "k": 0,
+   "bb": 1,
+   "ba": 0.308,
+   "ops": 0.742
+  },
+  {
+   "batter": "Alec Bohm",
+   "pitcher": "Max Scherzer",
+   "pa": 24,
+   "ab": 24,
+   "hits": 7,
+   "hr": 1,
+   "xbh": 0,
+   "k": 6,
+   "bb": 0,
+   "ba": 0.292,
+   "ops": 0.709
+  },
+  {
+   "batter": "Geraldo Perdomo",
+   "pitcher": "Yoshinobu Yamamoto",
+   "pa": 16,
+   "ab": 15,
+   "hits": 4,
+   "hr": 1,
+   "xbh": 0,
+   "k": 3,
+   "bb": 1,
+   "ba": 0.267,
+   "ops": 0.78
+  },
+  {
+   "batter": "Jordan Walker",
+   "pitcher": "Kyle Freeland",
+   "pa": 8,
+   "ab": 7,
+   "hits": 2,
+   "hr": 0,
+   "xbh": 2,
+   "k": 1,
+   "bb": 1,
+   "ba": 0.286,
+   "ops": 0.946
+  }
+ ],
+ "most_hrs_allowed_starters": [
+  {
+   "pitcher": "Max Scherzer",
+   "exp_hr": 1.02
+  },
+  {
+   "pitcher": "Michael King",
+   "exp_hr": 0.96
+  },
+  {
+   "pitcher": "Robert Gasser",
+   "exp_hr": 0.95
+  },
+  {
+   "pitcher": "Gerrit Cole",
+   "exp_hr": 0.95
+  },
+  {
+   "pitcher": "Aaron Nola",
+   "exp_hr": 0.91
+  }
+ ],
+ "sim_most_likely": {
+  "hit": [
+   [
+    "Caleb Durbin",
+    -335
+   ],
+   [
+    "Jacob Wilson",
+    -305
+   ],
+   [
+    "Steven Kwan",
+    -293
+   ],
+   [
+    "Jake Mangum",
+    -283
+   ],
+   [
+    "Jonah Heim",
+    -282
+   ]
+  ],
+  "two_plus_bases": [
+   [
+    "Caleb Durbin",
+    -104
+   ],
+   [
+    "Wilyer Abreu",
+    -103
+   ],
+   [
+    "Pete Crow-Armstrong",
+    100
+   ],
+   [
+    "Jonah Heim",
+    106
+   ],
+   [
+    "Jacob Wilson",
+    107
+   ]
+  ],
+  "steal": [
+   [
+    "Elly De La Cruz",
+    145
+   ],
+   [
+    "Pete Crow-Armstrong",
+    255
+   ],
+   [
+    "Chandler Simpson",
+    258
+   ],
+   [
+    "Nasim Nunez",
+    296
+   ]
+  ],
+  "run": [
+   [
+    "Pete Crow-Armstrong",
+    -140
+   ],
+   [
+    "Elly De La Cruz",
+    -126
+   ],
+   [
+    "Seiya Suzuki",
+    -126
+   ],
+   [
+    "Yordan Alvarez",
+    -115
+   ]
+  ],
+  "rbi": [
+   [
+    "Wilyer Abreu",
+    132
+   ],
+   [
+    "Jo Adell",
+    141
+   ],
+   [
+    "Michael Busch",
+    143
+   ],
+   [
+    "Dane Myers",
+    143
+   ],
+   [
+    "Pete Crow-Armstrong",
+    144
+   ]
+  ]
+ },
+ "sim_pitcher_props": {
+  "two_plus_hr_allowed": [
+   [
+    "Max Scherzer",
+    266
+   ],
+   [
+    "Michael King",
+    302
+   ],
+   [
+    "Gerrit Cole",
+    310
+   ],
+   [
+    "Robert Gasser",
+    313
+   ],
+   [
+    "Aaron Nola",
+    324
+   ]
+  ],
+  "eight_plus_k": [
+   [
+    "Gavin Williams",
+    -170
+   ],
+   [
+    "Chris Sale",
+    -111
+   ],
+   [
+    "Jacob deGrom",
+    -108
+   ]
+  ],
+  "quality_start": [
+   [
+    "Sandy Alcantara",
+    -230
+   ],
+   [
+    "George Kirby",
+    -159
+   ],
+   [
+    "Yoshinobu Yamamoto",
+    -156
+   ]
+  ]
+ },
+ "outlier_odds_report": [
+  {
+   "player": "J.T. Realmuto",
+   "prop": "HR",
+   "outlier": "+550 best vs +485 BP",
+   "note": "3.8% book gap - HR value corroboration"
+  },
+  {
+   "player": "Bryan Reynolds",
+   "prop": "HR",
+   "outlier": "+650 best vs +567 BP",
+   "note": "3.6% gap"
+  },
+  {
+   "player": "Jose Altuve",
+   "prop": "HR",
+   "outlier": "+1000 BetMGM vs +619 BP",
+   "note": "3.3% gap - biggest HR mispricing"
+  },
+  {
+   "player": "Wilyer Abreu",
+   "prop": "HR",
+   "outlier": "+529 best vs +452 BP",
+   "note": "3.2% gap"
+  },
+  {
+   "player": "Jackson Jobe",
+   "prop": "U1.5 walks",
+   "outlier": "+125 Novig",
+   "note": "first start back - BPP -124"
+  },
+  {
+   "player": "Jes\u00fas S\u00e1nchez",
+   "prop": "O1.5 hits",
+   "outlier": "+410 BetRivers",
+   "note": "6.8% vs consensus"
+  },
+  {
+   "player": "Landen Roupp",
+   "prop": "O2.5 walks",
+   "outlier": "+120 Novig",
+   "note": "7.1% gap"
+  },
+  {
+   "player": "Sandy Alcantara",
+   "prop": "O20.5 outs",
+   "outlier": "+113 Novig",
+   "note": "6.6% gap"
+  },
+  {
+   "player": "Lars Nootbaar",
+   "prop": "U0.5 bases",
+   "outlier": "+143 Bookmaker",
+   "note": "6.5% gap"
+  }
+ ]
+}

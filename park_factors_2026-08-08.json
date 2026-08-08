@@ -1,0 +1,175 @@
+{
+ "source": "Ballpark Pal park conditions sheet, 2026-08-08 (updated 11:13 AM). ~90F heat most games; 6 pink delay flags (BPP text says five; chart shows six).",
+ "games": {
+  "TOR@PHI": {
+   "park": "Citizens Bank Park",
+   "hr": 1.42,
+   "xbh": 0.9299999999999999,
+   "single": 0.95,
+   "runs": 1.12,
+   "rain_flag": true,
+   "wind": "",
+   "notes": "BPP: best HR env on slate - heat + 11mph out-blowing wind, more straight out than NYY"
+  },
+  "CHC@KC": {
+   "park": "Kauffman Stadium",
+   "hr": 1.21,
+   "xbh": 1.03,
+   "single": 1.02,
+   "runs": 1.1,
+   "rain_flag": true,
+   "wind": "",
+   "notes": ""
+  },
+  "ATL@NYY": {
+   "park": "Yankee Stadium",
+   "hr": 1.21,
+   "xbh": 0.94,
+   "single": 0.99,
+   "runs": 1.07,
+   "rain_flag": true,
+   "wind": "",
+   "notes": "heat + out-blowing wind"
+  },
+  "CIN@WAS": {
+   "park": "Nationals Park",
+   "hr": 1.12,
+   "xbh": 1.06,
+   "single": 1.02,
+   "runs": 1.07,
+   "rain_flag": true,
+   "wind": "",
+   "notes": ""
+  },
+  "MIN@MIL": {
+   "park": "American Family Field",
+   "hr": 1.08,
+   "xbh": 0.9,
+   "single": 0.91,
+   "runs": 0.96,
+   "rain_flag": false,
+   "wind": "",
+   "notes": ""
+  },
+  "ATH@BOS": {
+   "park": "Fenway Park",
+   "hr": 1.05,
+   "xbh": 1.23,
+   "single": 1.1,
+   "runs": 1.17,
+   "rain_flag": true,
+   "wind": "",
+   "notes": "BPP: top run environment Saturday - hits inside the yard; HR positive due to heat"
+  },
+  "HOU@SD": {
+   "park": "Petco Park",
+   "hr": 1.02,
+   "xbh": 0.9,
+   "single": 0.94,
+   "runs": 0.95,
+   "rain_flag": false,
+   "wind": "",
+   "notes": ""
+  },
+  "NYM@PIT": {
+   "park": "PNC Park",
+   "hr": 0.99,
+   "xbh": 1.13,
+   "single": 1.0,
+   "runs": 1.06,
+   "rain_flag": true,
+   "wind": "",
+   "notes": ""
+  },
+  "TB@SEA": {
+   "park": "T-Mobile Park",
+   "hr": 0.97,
+   "xbh": 0.79,
+   "single": 0.9,
+   "runs": 0.85,
+   "rain_flag": false,
+   "wind": "",
+   "notes": ""
+  },
+  "CLE@CHW": {
+   "park": "Rate Field",
+   "hr": 0.95,
+   "xbh": 0.91,
+   "single": 1.08,
+   "runs": 1.01,
+   "rain_flag": false,
+   "wind": "",
+   "notes": ""
+  },
+  "LAD@ARI": {
+   "park": "Chase Field",
+   "hr": 0.92,
+   "xbh": 1.11,
+   "single": 1.0,
+   "runs": 1.0,
+   "rain_flag": false,
+   "wind": "",
+   "notes": "roof"
+  },
+  "BAL@TEX": {
+   "park": "Globe Life Field",
+   "hr": 0.9,
+   "xbh": 0.9299999999999999,
+   "single": 0.98,
+   "runs": 0.9299999999999999,
+   "rain_flag": false,
+   "wind": "",
+   "notes": "roof"
+  },
+  "COL@STL": {
+   "park": "Busch Stadium",
+   "hr": 0.89,
+   "xbh": 1.05,
+   "single": 1.02,
+   "runs": 0.96,
+   "rain_flag": false,
+   "wind": "",
+   "notes": ""
+  },
+  "LAA@MIA": {
+   "park": "LoanDepot Park",
+   "hr": 0.87,
+   "xbh": 1.02,
+   "single": 0.98,
+   "runs": 0.95,
+   "rain_flag": false,
+   "wind": "",
+   "notes": "roof"
+  },
+  "DET@SF": {
+   "park": "Oracle Park",
+   "hr": 0.79,
+   "xbh": 1.21,
+   "single": 1.05,
+   "runs": 1.01,
+   "rain_flag": false,
+   "wind": "",
+   "notes": "BPP: out-blowing wind misleading - swirling; bottom-tier HR venue every year"
+  },
+  "CIN@WSH": {
+   "park": "Nationals Park",
+   "hr": 1.12,
+   "xbh": 1.06,
+   "single": 1.02,
+   "runs": 1.07,
+   "rain_flag": true,
+   "wind": "",
+   "notes": ""
+  },
+  "CLE@CWS": {
+   "park": "Rate Field",
+   "hr": 0.95,
+   "xbh": 0.91,
+   "single": 1.08,
+   "runs": 1.01,
+   "rain_flag": false,
+   "wind": "",
+   "notes": ""
+  }
+ }
+}
