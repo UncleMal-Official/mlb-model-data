@@ -1,0 +1,46 @@
+name: Model Autopilot
+
+on:
+  workflow_run:
+    workflows: ["Daily MLB Data Fetch"]
+    types: [completed]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: model
+  cancel-in-progress: false
+
+jobs:
+  model:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    # run after successful fetches (or manual dispatch)
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install pandas numpy pyarrow requests openpyxl playwright
+          playwright install --with-deps chromium
+
+      - name: Run daily model
+        run: python model/run_daily.py
+
+      - name: Commit outputs
+        run: |
+          git config user.name "mlb-model-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add outputs/ model/tracking.csv model/data/pitcher_splits_2026.json model/config/ || true
+          git diff --cached --quiet || git commit -m "Model outputs $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git pull --rebase -X theirs origin main
+          git push
