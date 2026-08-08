@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>CashCord POTD - __NAME__</title>
+<meta name="hz:slide-selector" content=".graphic" />
+<meta name="hz:canvas-width" content="1080" />
+<meta name="hz:canvas-height" content="1350" />
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #222; display: flex; justify-content: center; align-items: flex-start; }
+.graphic { position: relative; width: 1080px; height: 1350px; overflow: hidden; background: #090c0a; }
+.photo-band { position: absolute; top: 0; left: 0; width: 1080px; height: 620px; overflow: hidden; }
+.photo-band img.hero-blur { position: absolute; width: 1188px; height: 668px; left: -54px; top: 0; object-fit: cover;
+  filter: blur(26px) brightness(0.55); transform: scale(1.06); }
+.photo-band img.hero-img { position: absolute; width: 1188px; height: 668px; left: -54px; top: 84px; object-fit: cover; }
+.wash-top { position: absolute; top: 0; left: 0; width: 1080px; height: 150px;
+  background: linear-gradient(180deg, rgba(9,12,10,0.74) 0%, rgba(9,12,10,0.38) 55%, rgba(9,12,10,0) 100%); }
+.photo-band img.silo-img { position: absolute; left: 50%; transform: translateX(-50%); bottom: 0; height: 560px;
+  filter: drop-shadow(0 0 46px rgba(74,222,71,0.28)); }
+.medallion { position: absolute; left: 400px; top: 88px; width: 280px; height: 280px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #16301a, #0b130c 70%);
+  border: 3px solid #2f9e2b; box-shadow: 0 0 60px rgba(74,222,71,0.30);
+  display: flex; align-items: center; justify-content: center; }
+.medallion span { font-family: "bebas-neue-v14-deprecated", "DejaVu Sans Condensed", sans-serif;
+  font-size: 110px; color: #59e052; letter-spacing: 5px; font-weight: 700; padding-left: 5px; }
+.wash-bottom { position: absolute; top: 0; left: 0; width: 1080px; height: 620px;
+  background: linear-gradient(180deg, rgba(9,12,10,0.66) 0%, rgba(9,12,10,0.06) 24%, rgba(9,12,10,0.06) 46%, rgba(9,12,10,0.88) 82%, #090c0a 100%); }
+.wash-sides { position: absolute; top: 0; left: 0; width: 1080px; height: 620px;
+  background: linear-gradient(90deg, rgba(9,12,10,0.55) 0%, rgba(9,12,10,0) 26%, rgba(9,12,10,0) 74%, rgba(9,12,10,0.55) 100%); }
+.glow-photo { position: absolute; left: 90px; top: 300px; width: 900px; height: 560px;
+  background: radial-gradient(ellipse at center, rgba(74,222,71,0.16) 0%, rgba(46,160,44,0.07) 45%, rgba(0,0,0,0) 70%); }
+.glow-body { position: absolute; left: -160px; bottom: -430px; width: 1400px; height: 860px;
+  background: radial-gradient(ellipse at center, rgba(74,222,71,0.13) 0%, rgba(46,160,44,0.06) 45%, rgba(0,0,0,0) 72%); }
+.kickerline { position: absolute; top: 48px; left: 0; width: 1080px; text-align: center;
+  font-family: "omnes-pro", "Carlito", sans-serif; font-weight: 700;
+  font-size: 25px; letter-spacing: 8px; color: #59e052; text-transform: uppercase; white-space: nowrap;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.95); }
+.kickerline span.dt { color: #ffffff; }
+.kickerline.kicker-action { top: 30px; }
+.name { position: absolute; top: 396px; left: 0; width: 1080px; text-align: center;
+  font-family: "bebas-neue-v14-deprecated", "DejaVu Sans Condensed", sans-serif; font-weight: 700;
+  font-size: 104px; line-height: 1.0; color: #ffffff; letter-spacing: 1px; white-space: nowrap;
+  text-shadow: 0 4px 26px rgba(0,0,0,0.85); }
+.matchup { position: absolute; top: 514px; left: 0; width: 1080px; text-align: center;
+  font-family: "omnes-pro", "Carlito", sans-serif; font-weight: 600;
+  font-size: 24px; letter-spacing: 2px; color: #c9cfc9; text-transform: uppercase; white-space: nowrap;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.9); }
+.season { position: absolute; top: 560px; left: 0; width: 1080px; text-align: center;
+  font-family: "omnes-pro", "Carlito", sans-serif; font-weight: 600;
+  font-size: 22px; letter-spacing: 2px; color: #8d948d; text-transform: uppercase; white-space: nowrap;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.9); }
+.season b { color: #5be455; font-weight: 700; }
+.seam { position: absolute; top: 620px; left: 0; width: 1080px; height: 4px;
+  background: linear-gradient(90deg, rgba(74,222,71,0) 0%, #2f9e2b 30%, #59e052 50%, #2f9e2b 70%, rgba(74,222,71,0) 100%); }
+.play-label { position: absolute; top: 664px; left: 0; width: 1080px; text-align: center;
+  font-family: "omnes-pro", "Carlito", sans-serif; font-weight: 700;
+  font-size: 23px; letter-spacing: 9px; color: #59e052; text-transform: uppercase; white-space: nowrap; }
+.market { position: absolute; top: 716px; left: 156px; text-align: left;
+  font-family: "bebas-neue-v14-deprecated", "DejaVu Sans Condensed", sans-serif; font-weight: 700;
+  font-size: 46px; line-height: 1.0; color: #eef1ee; letter-spacing: 6px; white-space: nowrap; }
+.hero { position: absolute; top: 784px; left: 152px; text-align: left;
+  font-family: "condor", "DejaVu Sans Condensed", sans-serif; font-style: italic; font-weight: 800;
+  font-size: 122px; line-height: 1.0; color: #4ade47; white-space: nowrap;
+  text-shadow: 0 8px 55px rgba(74,222,71,0.45); }
+.logo-badge { position: absolute; left: 760px; top: 726px; width: 176px; height: 176px;
+  border-radius: 22px; overflow: hidden; box-shadow: 0 0 40px rgba(74,222,71,0.35); }
+.logo-badge img { width: 176px; height: 176px; }
+.grid { position: absolute; top: 948px; left: 72px; width: 936px; height: 304px; }
+.tile { position: absolute; width: 296px; height: 140px; background: rgba(17,24,18,0.94);
+  border: 1px solid #21361f; border-radius: 12px; padding: 8px 16px; overflow: hidden; text-align: center;
+  display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.tile .val { font-family: "bebas-neue-v14-deprecated", "DejaVu Sans Condensed", sans-serif;
+  font-weight: 700; font-size: 48px; line-height: 1.0; color: #5be455; white-space: nowrap; max-width: 100%; }
+.tile .lab { margin-top: 10px; font-family: "omnes-pro", "Carlito", sans-serif; font-weight: 600;
+  font-size: 17px; letter-spacing: 2px; color: #8d948d; text-transform: uppercase; white-space: nowrap; max-width: 100%; }
+.c1 { left: 0; } .c2 { left: 320px; } .c3 { left: 640px; }
+.r1 { top: 0; } .r2 { top: 164px; }
+.support { position: absolute; top: 1262px; left: 0; width: 1080px; text-align: center;
+  font-family: "omnes-pro", "Carlito", sans-serif; font-weight: 600;
+  font-size: 20px; letter-spacing: 0.3px; color: #9aa19a; white-space: nowrap; }
+.support b { color: #5be455; font-weight: 700; }
+.footer { position: absolute; left: 0; right: 0; bottom: 0; height: 52px;
+  background: linear-gradient(90deg, #1d7a1a 0%, #3fbf39 50%, #59e052 100%); }
+.footer .f-center { position: absolute; left: 0; top: 13px; width: 1080px; text-align: center;
+  font-family: "omnes-pro", "Carlito", sans-serif; font-weight: 700;
+  font-size: 22px; letter-spacing: 10px; color: #06140a; text-transform: uppercase; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="graphic" data-canvas-width="1080" data-canvas-height="1350">
+  __PHOTO_BLOCK__
+  <div class="glow-body"></div>
+
+  <div class="kickerline">Play of the Day &nbsp;<span class="dt">&middot;&nbsp; __KICKER_DATE__</span></div>
+
+  <div class="name">__NAME__</div>
+  <div class="matchup">__MATCHUP__</div>
+  <div class="season">__SEASON__</div>
+
+  <div class="seam"></div>
+
+  <div class="play-label">The Play &mdash; PrizePicks</div>
+  <div class="market">__MARKET__</div>
+  <div class="hero">__HERO__</div>
+
+  <div class="logo-badge"><img src="data:image/png;base64,__LOGO__" width="176" height="176" alt="CashCord" /></div>
+
+  <div class="grid">
+    __TILES__
+  </div>
+
+  <div class="support">__SUPPORT__</div>
+
+  <div class="footer">
+    <span class="f-center">CashCord</span>
+  </div>
+</div>
+</body>
+</html>

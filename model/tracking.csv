@@ -1,0 +1,8 @@
+date,cohort,n,hits,notes
+2026-08-07,POTD,1,0,"Witt FS o7.0 -> exactly 7.0, PUSH (refund). Sim median was 7-8."
+2026-08-07,TOP6,6,3,over model-est lines (median-1); mean actual 7.8
+2026-08-07,CORE20,20,11,55%% over est lines; mean actual 9.2 vs est line 6.9; beats 54.2%% flex breakeven night 1
+2026-08-07,PGS20_raw,20,7,"raw PGS top-20 underperformed slate (6.55 vs 6.76 mean FP) - signal needs conf/proj blend, tracking"
+2026-08-07,DAY_AFTER,18,12,"mean act 9.6 vs slate 6.7; HRs: Eugenio Suárez, Fernando Tatis Jr., Carter Jensen, Josh Smith"
+2026-08-07,FADES,2,1,Alvarez HR fade CORRECT (0 HR vs BPP +392); Ohtani BB-over fade WRONG (2 BB)
+2026-08-07,SLATE_CAL,270,0,"mean proj 7.44 vs actual 6.74 (+0.7 hot, no PP lines yet) - rankings > absolutes until calibration"

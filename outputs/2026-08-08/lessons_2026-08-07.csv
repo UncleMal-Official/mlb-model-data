@@ -1,0 +1,11 @@
+,category,score,headline,data
+1,UNLUCKY,7.18,Spencer Jones (New York Yankees) got robbed - the process was elite,"3 batted balls at 0.618 expected wOBA vs 0.000 actual; 1 barrel(s), max 105 mph, 413 ft. Contact like this pays off within days - Day After watch."
+2,UNLUCKY,7.12,Grant McCray (San Francisco Giants) got robbed - the process was elite,"3 batted balls at 0.612 expected wOBA vs 0.000 actual; 1 barrel(s), max 100 mph, 381 ft. Contact like this pays off within days - Day After watch."
+3,UNLUCKY,6.14,Pete Alonso (Baltimore Orioles) got robbed - the process was elite,"3 batted balls at 0.514 expected wOBA vs 0.000 actual; 1 barrel(s), max 104 mph, 382 ft. Contact like this pays off within days - Day After watch."
+4,LUCKY,5.64,Cam Smith (Houston Astros) cashed weak contact - regression warning,Actual 1.633 wOBA on 3 batted balls vs just 1.007 expected. The box score flatters him - beware the public chasing this today.
+5,LUCKY,4.36,Steven Kwan (Cleveland Guardians) cashed weak contact - regression warning,Actual 0.760 wOBA on 5 batted balls vs just 0.275 expected. The box score flatters him - beware the public chasing this today.
+6,LUCKY,4.15,Josh Bell (Minnesota Twins) cashed weak contact - regression warning,Actual 0.940 wOBA on 5 batted balls vs just 0.478 expected. The box score flatters him - beware the public chasing this today.
+7,UNLUCKY,3.57,CJ Abrams (Washington Nationals) got robbed - the process was elite,"3 batted balls at 0.657 expected wOBA vs 0.300 actual; 0 barrel(s), max 105 mph, 272 ft. Contact like this pays off within days - Day After watch."
+8,FELL OFF,1.57,Kazuma Okamoto (Toronto Blue Jays) has genuinely fallen off - not just variance,xwOBA on contact: 0.503 season vs 0.306 last 21 days (50 recent batted balls). Why: chase rate up 11 pts.
+9,FELL OFF,1.17,Jordan Walker (St. Louis Cardinals) has genuinely fallen off - not just variance,xwOBA on contact: 0.517 season vs 0.371 last 21 days (55 recent batted balls). Why: whiff rate up 3 pts.
+10,FELL OFF,1.17,Trent Grisham (New York Yankees) has genuinely fallen off - not just variance,xwOBA on contact: 0.463 season vs 0.318 last 21 days (56 recent batted balls). Why: chase rate up 8 pts.

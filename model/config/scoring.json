@@ -1,0 +1,14 @@
+{
+  "prizepicks_batter_fantasy_score": {
+    "single": 3,
+    "double": 5,
+    "triple": 8,
+    "home_run": 10,
+    "run": 2,
+    "rbi": 2,
+    "walk": 2,
+    "hit_by_pitch": 2,
+    "stolen_base": 5
+  },
+  "notes": "Batters only receive points from batter stat types. Source: PrizePicks Fantasy Score Breakdown screenshot 2026-08-07."
+}
