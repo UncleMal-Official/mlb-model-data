@@ -11,7 +11,7 @@ Steps (each non-fatal where sensible):
   8. Workbook + auto-POTD card (real player art from data/headshots/).
   9. Copy everything to outputs/<today>/ for commit.
 """
-import json, os, pathlib, shutil, subprocess, sys
+import json, os, pathlib, re, shutil, subprocess, sys
 from datetime import date, timedelta
 
 import pandas as pd
@@ -214,16 +214,49 @@ print("lessons:", len(L))
 """], check=False, cwd=MODEL)
     except Exception as e:
         log(f"lessons: {e}")
-    pp = sorted((WS / "data" / "pp").glob(f"pp_{TODAY}*.json")) if (WS / "data" / "pp").exists() else []
+    # PrizePicks JSON: accept data/pp/ OR repo root, any pp_<date>.json / projections json
+    cands = []
+    for d in (WS / "data" / "pp", WS, MODEL / "data"):
+        if d.exists():
+            cands += [p for p in d.glob("*.json")
+                      if re.search(r"^(pp[_-]|prizepicks|projections)", p.name, re.I)
+                      and (TODAY in p.name or re.search(r"projections", p.name, re.I))]
+    pp = sorted(set(cands))
+    cal_k = None
     if pp:
-        subprocess.run([sys.executable, str(MODEL / "join_pp_lines.py"), *[str(x) for x in pp],
-                        "--date", TODAY], check=False, cwd=MODEL)
+        r = subprocess.run([sys.executable, str(MODEL / "join_pp_lines.py"), *[str(x) for x in pp],
+                            "--date", TODAY], capture_output=True, text=True, cwd=MODEL)
+        print(r.stdout[-3000:], flush=True)
+        m = re.search(r"calibration: k = ([0-9.]+)", r.stdout or "")
+        if m:
+            cal_k = float(m.group(1))
+        log(f"PP lines joined from {[p.name for p in pp]} | cal k={cal_k}")
     else:
-        log("no PrizePicks JSON for today (upload to data/pp/) - board ships without lines")
+        log("no PrizePicks JSON found (drop pp_<date>.json in data/pp/ or repo root) - board ships without lines")
+
     subprocess.run([sys.executable, str(MODEL / "make_xlsx_v2.py"), TODAY, "v1"], check=False, cwd=MODEL)
-    subprocess.run([sys.executable, str(MODEL / "make_potd_card.py"),
-                    "--board", str(OUT / f"full_board_v1_{TODAY}.csv"), "--date", TODAY],
-                   check=False, cwd=MODEL)
+
+    board_arg = ["--board", str(OUT / f"full_board_v1_{TODAY}.csv"), "--date", TODAY]
+    subprocess.run([sys.executable, str(MODEL / "make_potd_card.py"), *board_arg], check=False, cwd=MODEL)
+
+    # If real lines exist, re-render the card with the pick's ACTUAL line + market calibration
+    pp_csv = OUT / f"board_pp_{TODAY}.csv"
+    meta_p = OUT / f"potd_auto_{TODAY}.json"
+    if cal_k and pp_csv.exists() and meta_p.exists():
+        try:
+            meta = json.load(open(meta_p))
+            dfp = pd.read_csv(pp_csv)
+            hit = dfp[dfp.player_id == meta["player_id"]]
+            line = float(hit.fs_line.iloc[0]) if len(hit) and pd.notna(hit.fs_line.iloc[0]) else None
+            if line:
+                subprocess.run([sys.executable, str(MODEL / "make_potd_card.py"), *board_arg,
+                                "--player", meta["player"], "--line", str(line),
+                                "--cal-k", str(cal_k)], check=False, cwd=MODEL)
+                log(f"card re-rendered with REAL line {line} (cal k={cal_k})")
+            else:
+                log(f"{meta['player']} has no PP fantasy line - card keeps model estimate")
+        except Exception as e:
+            log(f"card real-line pass: {e}")
 
 
 # ---- 9. stage outputs for commit
